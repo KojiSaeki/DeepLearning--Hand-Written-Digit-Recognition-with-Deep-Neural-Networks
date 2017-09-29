@@ -683,11 +683,7 @@ class ConvolutionalLayer(LayerWithParameters):
         (num_output_channels,)
     i.e. one shared bias per output channel.
 
-    Assuming no-padding is applied to the inputs so that outputs are only
-    calculated for positions where the kernel filters fully overlap with the
-    inputs, and that unit strides are used the outputs will have spatial extent
-        output_dim_1 = input_dim_1 - kernel_dim_1 + 1
-        output_dim_2 = input_dim_2 - kernel_dim_2 + 1
+    
     """
 
     def __init__(self, num_input_channels, num_output_channels,
@@ -826,9 +822,7 @@ class ConvolutionalLayer(LayerWithParameters):
             list of arrays of gradients with respect to the layer parameters
             `[grads_wrt_kernels, grads_wrt_biases]`.
         """
-        #print grads_wrt_outputs
-        #print inputs
-        #print "YOLO"
+
         noi = len(inputs)
         nog = len(grads_wrt_outputs)
         noch = len(inputs[0])
@@ -855,7 +849,6 @@ class ConvolutionalLayer(LayerWithParameters):
                     bias+=np.sum(grads_wrt_outputs[pj][pi])
                 biases.append(bias)
                 bias=0
-        #print "NEW KERNEL="+str(np.array(layers))
         return [np.array(layers),np.array(biases)]
         
 
