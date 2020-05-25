@@ -1,4 +1,4 @@
-# Hand-Written-Digit-Recognition-with-Deep-Neural-Networks
+# Hand-Written-Digit-Recognition-with-Deep-Neural-Networks-from-Scratch
 
 We have implemented deep neural networks for hand-written digit recognition from scratch.
 
